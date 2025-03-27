@@ -15,5 +15,7 @@ It can organize it based on either one of these 3 criteria: artist, album or yea
 
 Extra param details:
 `--contact_email`: if anything goes wrong on musicbrainz, it's where they'll contact you
+
 `--order_by`: the criteria the files get organized by
+
 `--remove_origin`: removes source files after organized; skip to keep original files

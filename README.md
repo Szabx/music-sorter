@@ -14,6 +14,7 @@ It can organize it based on either one of these 3 criteria: artist, album or yea
 `python parser.py --input_path "{source_absolute_path}" --api_key "{acoustid_application_api_key}" --output_path "{destination_absolute_path}" --contact_email "{musicbrainz_contact_email}" --order_by {artist/album/year} --remove_origin --batch_size {number_of_concurrently_processed_files}`
 
 Extra param details:
+
 `--contact_email`: if anything goes wrong on musicbrainz, it's where they'll contact you
 
 `--order_by`: the criteria the files get organized by

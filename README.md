@@ -23,3 +23,5 @@ Extra param details:
 `--order_by`: the criteria the files get organized by
 
 `--remove_origin`: removes source files after organized; skip to keep original files
+
+For everything else there's mastercard and --help

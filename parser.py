@@ -42,6 +42,7 @@ def process_file(file_path: Path, api_key: str, contact_email: str, output_path:
                             print(f"Deleted original file: {file_path}")
                         except Exception as e:
                             print(f"Error deleting original file {file_path}: {e}")
+                    return None
         return None
     except Exception as e:
         print(f"Error processing file {file_path}: {e}")

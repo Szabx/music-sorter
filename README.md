@@ -6,6 +6,9 @@ Simple script that grinds through music files, and organizes them
 - Chromaprint fpcalc - https://acoustid.org/chromaprint
 - AcoustID application api key(registration required) - https://acoustid.org/new-application
 
+# Limitations:
+Be mindful that this was created for non-commercial use. [MusicBrainz](https://musicbrainz.org/) have a pricing for frequent uses
+
 ## Detailed description
 Simple script that uses AcoustID to create fingerprints from music files, sends them to [MusicBrainz](https://musicbrainz.org/) to get the meta data, then moves and renames the files, based on the received data.
 It can organize it based on either one of these 3 criteria: artist, album or year.

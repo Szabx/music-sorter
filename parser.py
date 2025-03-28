@@ -18,7 +18,6 @@ def process_file(file_path: Path, api_key: str, contact_email: str) -> dict:
             return None
         
         acoustid_result = recognize_song_acoustid(fingerprint, duration, api_key)
-        print('AR: ', acoustid_result)
         if acoustid_result and "results" in acoustid_result:
             for result in acoustid_result["results"]:
                 if "recordings" in result:
@@ -174,9 +173,6 @@ def main():
 
     files = list(input_path.glob("**/*"))
     process_files_in_batches(files, batch_size, output_path, order_by, api_key, contact_email, remove_origin)
-    # ipf = Path("C:\\music_test\\in\\[01] Sensation White 2006.mp3")
-    # res = process_file(ipf, api_key, contact_email)
-    # print(res)
 
 if __name__ == "__main__":
     main()

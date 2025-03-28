@@ -4,7 +4,7 @@ from typing import List
 import shutil
 import concurrent.futures
 from enum import Enum
-from sound_utils import generate_fingerprint, recognize_song_acoustid, get_musicbrainz_metadata
+from sound_utils import generate_fingerprint, recognize_song_acoustid, get_musicbrainz_metadata, escape_folder_name
 
 class OrderBy(Enum):
     ARTIST = "artist"
@@ -60,15 +60,13 @@ def process_files_in_batches(
         for i in range(0, len(files), batch_size):
             batch = files[i : i + batch_size]
             print(f"Processing batch {i // batch_size + 1} of {len(files) // batch_size + 1} with {len(batch)} files.")
-            for file_path_original in batch:
-                if not file_path_original.exists() or not file_path_original.is_file():
-                    print(f"Skipping invalid file: {file_path_original}")
+            for file_path in batch:
+                if not file_path.exists() or not file_path.is_file():
+                    print(f"Skipping invalid file: {file_path}")
                     continue
-                if file_path_original.suffix.lower() not in [".mp3", ".flac", ".wav", ".ogg"]:
-                    print(f"Unsupported file format: {file_path_original}")
+                if file_path.suffix.lower() not in [".mp3", ".flac", ".wav", ".ogg"]:
+                    print(f"Unsupported file format: {file_path}")
                     continue
-                file_path_str = str(file_path_original)
-                file_path = Path(file_path_str.encode("utf-8").decode())
                 metadata = process_file(file_path, api_key, contact_email, output_path, remove_origin)
                 if metadata:
                     recording = metadata.get("recording", {})

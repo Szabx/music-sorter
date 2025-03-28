@@ -10,7 +10,6 @@ class OrderBy(Enum):
     ARTIST = "artist"
     ALBUM = "album"
     YEAR = "year"
-    GENRE = "genre"
 
 def process_file(file_path: Path, api_key: str, contact_email: str) -> dict:
     try:
@@ -149,7 +148,7 @@ def main():
         type=str,
         choices=[e.value for e in OrderBy],
         default=OrderBy.ARTIST.value,
-        help="Criteria for organizing files: 'artist', 'album', 'year', or 'genre'. Default is 'artist'."
+        help="Criteria for organizing files: 'artist', 'album' or 'year'. Default is 'artist'."
     )
     parser.add_argument(
         "--remove_origin",

@@ -11,7 +11,7 @@ class OrderBy(Enum):
     ALBUM = "album"
     YEAR = "year"
 
-def process_file(file_path: Path, api_key: str, contact_email: str) -> dict:
+def process_file(file_path: Path, api_key: str, contact_email: str, output_path: Path, remove_origin: bool) -> dict:
     try:
         fingerprint, duration = generate_fingerprint(file_path)
         if not fingerprint or not duration:
@@ -68,8 +68,8 @@ def process_files_in_batches(
                     print(f"Unsupported file format: {file_path_original}")
                     continue
                 file_path_str = str(file_path_original)
-                file_path = file_path_str.encode("utf-8").decode()
-                metadata = process_file(file_path, api_key, contact_email)
+                file_path = Path(file_path_str.encode("utf-8").decode())
+                metadata = process_file(file_path, api_key, contact_email, output_path, remove_origin)
                 if metadata:
                     recording = metadata.get("recording", {})
                     
